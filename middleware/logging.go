@@ -34,7 +34,7 @@ func (lw *loggingWriter) log() {
 		level = slog.LevelError
 	}
 
-	msg := fmt.Sprintf("[%d] %s %s", lw.status, lw.req.Method, lw.req.URL.Path)
+	msg := fmt.Sprintf("%s \"%s %s\" [%d]", lw.req.RemoteAddr, lw.req.Method, lw.req.URL.Path, lw.status)
 	attrs := []slog.Attr{
 		slog.Int("status", lw.status),
 		slog.String("path", lw.req.URL.Path),
