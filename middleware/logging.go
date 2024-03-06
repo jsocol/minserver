@@ -46,9 +46,9 @@ func (lw *loggingWriter) log() {
 	slog.LogAttrs(lw.req.Context(), level, msg, attrs...)
 }
 
-// LoggingMiddleware logs all requests using [log/slog]. If the request times
+// Logging logs all requests using [log/slog]. If the request times
 // out, the status will be set to 0.
-func LoggingMiddleware(next http.HandlerFunc) http.HandlerFunc {
+func Logging(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		lw := &loggingWriter{
 			ResponseWriter: w,

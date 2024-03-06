@@ -8,9 +8,9 @@ import (
 	"github.com/jsocol/minserver"
 )
 
-// NewDeadlineMiddleware returns a middleware function that applies a default
+// NewDeadline returns a middleware function that applies a default
 // timeout to incoming requests that don't have one set.
-func NewDeadlineMiddleware(defaultTimeout time.Duration) minserver.Middleware {
+func NewDeadline(defaultTimeout time.Duration) minserver.Middleware {
 	return func(next http.HandlerFunc) http.HandlerFunc {
 		return func(w http.ResponseWriter, r *http.Request) {
 			ctx := r.Context()
